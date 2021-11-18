@@ -1,5 +1,5 @@
-var letters = []; //letters of the input word
-var lives = 15;
+var letters = [];
+var lives = 10;
 
 function addWord() {
   var word = document.getElementById("word-input").value;
@@ -28,30 +28,35 @@ function displayLives() {
   life.append(numberOfLives);
 }
 
+var lettersGuessed = 0;
 function guessLetter(letterChosen) {
-  var j = 0;
+  var counter = 0;
   for (var i = 0; i < letters.length; ++i) {
     //looking for the letter in the word
     if (letterChosen.toUpperCase() == letters[i]) {
       var spaceForLetter = document.getElementById(i);
       spaceForLetter.innerText = letters[i];
+      ++lettersGuessed;
+      if (lettersGuessed == letters.length) {
+        displayMessage();
+      }
     } else {
-      ++j;
+      ++counter;
     }
   }
-  shortenLife(j);
+  if (counter == letters.length) {
+    shortenLife();
+  }
 }
 
-function shortenLife(x) {
-  if (x == letters.length) {
-    if (lives > 1) {
-      --lives;
-      displayLives();
-    } else if (lives == 1) {
-      --lives;
-      displayLives();
-      displayMessage();
-    }
+function shortenLife() {
+  if (lives > 1) {
+    --lives;
+    displayLives();
+  } else if (lives == 1) {
+    --lives;
+    displayLives();
+    displayMessage();
   }
 }
 
@@ -59,5 +64,7 @@ function displayMessage() {
   var nrLives = document.getElementById("lives");
   if (lives == 0) {
     nrLives.innerHTML = "You've been hanged!";
+  } else if (lives > 0) {
+    nrLives.innerHTML = "You won!";
   }
 }
