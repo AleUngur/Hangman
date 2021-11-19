@@ -6,15 +6,13 @@ function addWord() {
   word = word.toUpperCase();
   document.getElementById("word-input").value = "";
   letters = word.split("");
-  console.log(letters);
-  console.log("array length: " + letters.length);
 }
 
 function displayLines() {
   for (var i = 0; i < letters.length; ++i) {
     var col = document.createElement("div");
     col.className = "col-1 my-1 col-lines";
-    col.innerHTML = "____";
+    col.innerText = "____";
     col.id = i;
     document.getElementById("word-lines").appendChild(col);
   }
@@ -30,13 +28,19 @@ function displayLives() {
 
 var lettersGuessed = 0;
 function guessLetter(letterChosen) {
+  var mess = (document.getElementById("mess").innerText = "");
   var counter = 0;
   for (var i = 0; i < letters.length; ++i) {
     //looking for the letter in the word
     if (letterChosen.toUpperCase() == letters[i]) {
       var spaceForLetter = document.getElementById(i);
-      spaceForLetter.innerText = letters[i];
-      ++lettersGuessed;
+      if (spaceForLetter.innerText == "____") {
+        spaceForLetter.innerText = letters[i];
+        ++lettersGuessed;
+      } else {
+        var mess = document.getElementById("mess");
+        mess.innerText = "You already guessed this letter!";
+      }
       if (lettersGuessed == letters.length) {
         displayMessage();
       }

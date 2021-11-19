@@ -16,8 +16,8 @@
     <title>Hangman</title>
   </head>
   <body>
-    <div class="row justify-content-center">
-      <div class="col my-4 position-relative">
+    <div class="row justify-content-center container">
+      <div class="col my-4 position-relative container">
         <h1 class="position-absolute top-50 start-50 translate-middle">
           Hangman
         </h1>
@@ -36,8 +36,8 @@
           Lives
       </div>
       <div class="col-md-4 sm-6">
-        <div class="row justify-content-center">
-          <div class="mb-3 mx-1">
+        <div class="row justify-content-center container">
+          <div class="mb-3 mx-1 container">
             <input
               type="text"
               class="form-control mb-1"
@@ -47,15 +47,15 @@
             <button
               type="submit"
               class="btn btn-danger"
-              onclick="addWord(); displayLines(); displayLives(15);"
+              onclick="addWord(); displayLines(); displayLives();"
             >
               Start
             </button>
           </div>
         </div>
 
-        <div class="row justify-content-center">
-          <div class="row">
+        <div class="row justify-content-center container">
+          <div class="row container">
             <!--primul rand de butoane-->
             <div class="col-1 my-2 mx-2">
               <button
@@ -360,6 +360,7 @@
     </div>
     <div class="row my-5"></div>
     <div class="row justify-content-center mt-5" id="word-lines"></div>
+    <div class="row justify-content-center mt-5" id="mess"></div>
 
     <script src="script.js"></script>
     <script
