@@ -52,7 +52,7 @@ function keys(letterIndex, colNumber, rowNumber) {
   button.className = "btn btn-warning";
   button.style = "height: 40px; width: 40px";
   button.id = alphabet[letterIndex];
-  button.innerText = alphabet[letterIndex];
+  button.innerText = alphabet[letterIndex].toUpperCase();
   document.getElementById("col" + rowNumber + colNumber).appendChild(button);
 }
 
